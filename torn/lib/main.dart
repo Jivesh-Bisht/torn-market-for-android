@@ -316,31 +316,33 @@ class _ItemListPageState extends State<ItemListPage> {
                     },
                   ),
                 ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.95),
-                    boxShadow: const [
-                      BoxShadow(color: Colors.black12, blurRadius: 4)
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Total Amount: ${formatPrice(totalAmount)}",
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.teal)),
-                      Text("Total Payable: ${formatPrice(totalPayable)}",
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.green)),
-                    ],
-                  ),
-                )
+                SafeArea(
+  child: Container(
+    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+    color: Colors.grey[200],
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: Text(
+            "Total Amount: ${formatPrice(totalAmount)}",
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        Flexible(
+          child: Text(
+            "Total Payable: ${formatPrice(totalPayable)}",
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.right,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
+    ),
+  ),
+),
+
               ],
             ),
     );
